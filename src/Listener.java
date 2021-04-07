@@ -5,14 +5,23 @@ public class Listener extends LTBaseListener {
 
     // Declaration de la liste qui contiendra les erreurs rencontrees
     ArrayList<String> listeErreurs = new ArrayList<>();
+    //table de hashage pour y mettre le type et la regle
     private HashMap<ParserRuleContext, Integer> types = new HashMap<>();
-    private static int typesC[] = {0, INT | FLOAT, INT | FLOAT, INT | FLOAT}; // types compatibility operations 0,int,float
-    private static int typesA[] = {0, INT, INT | FLOAT, INT | FLOAT}; // types compatibility affectation 0,int,float
+    
+    // compatibilite des types
+    private static int typesC[] = {0, INT | FLOAT, INT | FLOAT, INT | FLOAT}; 
+    private static int typesA[] = {0, INT, INT | FLOAT, INT | FLOAT}; 
 
+    // valeur correspondante a une variable declaree
     private static final int DECLARED = 1;
+    // valeur correspondante a une variable non declaree
     private static final int UNDECLARED = 2;
+    // valeur correspondante au type float
     private static final int FLOAT = 2;
+    // valeur correspondante au type int
     private static final int INT = 1;
+    // valeur correspondante au type string
+    private static final int INT = 3;
 
     public void exitProgram(TinyParser.ProgContext ctx) {
 
