@@ -51,7 +51,7 @@ public class Listener extends LTBaseListener {
             if (ts.containsElement(varName)) {
                 errors.add("Double declaration of variable: " + varName);
             } else
-                ts.addElement(new Ts.Element(varName, DECLARED, type, 1));
+                ts.addElement(new Ts.Element(varName, DECLARED, type, ""));
             if (vars.vars() == null)
                 return;
         }
@@ -63,7 +63,7 @@ public class Listener extends LTBaseListener {
         if (!ts.containsElement(ctx.ID().getText())) {
             listeErreurs.add("variable " + ctx.ID().getText() + " has not been declared at line " + ctx.ID().getSymbol().getLine());
             // Ajouter l'idf non declare a ts pour ne pas regenerer la meme erreur
-            ts.addElement(new ts.Element(ctx.ID().getText(), false, INT | FLOAT, 1));
+            ts.addElement(new ts.Element(ctx.ID().getText(), false, INT | FLOAT, ""));
 
         }
     }
@@ -75,7 +75,20 @@ public class Listener extends LTBaseListener {
             if (!ts.containsElement(ctx.ID().getText())) {
                 //on verifie si l'identificateur existe dans la TS
                 //la variable n'est pas declaree
-                listeErreurs.add("Ereeur: la variable " + ctx.ID().getText() + " n'est pas declaree");
+                listeErreurs.
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    ("Ereeur: la variable " + ctx.ID().getText() + " n'est pas declaree");
             } else {
                 //la variable est declaree, on verifie le type de l'idf et la variable affectee
                 //on recupere le type de la variable de la ts de hachage Ruletype
