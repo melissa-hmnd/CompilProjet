@@ -20,6 +20,14 @@ public class Quad {
         return operateur;
     }
 
+    public String getOperendeG() {
+        return operendeG;
+    }
+
+    public String getOperendeD() {
+        return operendeD;
+    }
+
     public String getRes() {
         return res;
     }

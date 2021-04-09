@@ -57,8 +57,8 @@ type: INT | FLOAT | STRING;
 var : ID ', ' var | ID;
 
 // LES AFFECTATIONS
-aff: ID AFCT ID | ID AFCT exp ;
-exp: exp pm complicated | complicated;
+aff: ID AFCT exp ;
+exp: exp pm complicated | complicated | ID;
 complicated: complicated md fex | fex;
 pm: PLUS | MOIN ;
 md: MUL | DIV;
