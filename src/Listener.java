@@ -23,7 +23,7 @@ public class Listener extends LTBaseListener {
     // valeur correspondante au type string
     private static final int STRING = 3;
 
-    public void exitProgram(TinyParser.ProgContext ctx) {
+    public void exitProgram(LTParser.ProgContext ctx) {
 
         if (listeErreurs.size() == 0) // aucune erreur rencontree lors de la compilation
         {
@@ -40,7 +40,7 @@ public class Listener extends LTBaseListener {
 
     }
 
-    public void exitDec(TLParser.DecContext ctx) {
+    public void exitDec(LTParser.DecContext ctx) {
         int type;
         if (ctx.type().getText().equals("intCompil") == True )
         {type = INT;}
@@ -63,7 +63,7 @@ public class Listener extends LTBaseListener {
 
     }
 
-    public void exitIdentifier(TLParser.IdentifierContext ctx) {
+    public void exitIdentifier(LTParser.IdentifierContext ctx) {
         // verifier si L'ID a ete declare
         if (!ts.containsElement(ctx.ID().getText())) {
             listeErreurs.add("variable " + ctx.ID().getText() + " has not been declared at line " + ctx.ID().getSymbol().getLine());
@@ -74,26 +74,13 @@ public class Listener extends LTBaseListener {
     }
 
 
-    public void exitAff(TinyParser.AffContext ctx) {
+    public void exitAff(LTParser.AffContext ctx) {
 
         if (ctx.ID() != null) {
             if (!ts.containsElement(ctx.ID().getText())) {
                 //on verifie si l'identificateur existe dans la TS
                 //la variable n'est pas declaree
-                listeErreurs.
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    ("Ereeur: la variable " + ctx.ID().getText() + " n'est pas declaree");
+                listeErreurs.add("Ereeur: la variable " + ctx.ID().getText() + " n'est pas declaree");
             } else {
                 //la variable est declaree, on verifie le type de l'idf et la variable affectee
                 //on recupere le type de la variable de la ts de hachage Ruletype
@@ -109,7 +96,7 @@ public class Listener extends LTBaseListener {
         }
     }
 
-    public void exitWrite(TLParser.WriteContext ctx) {
+    public void exitWrite(LTParser.WriteContext ctx) {
         if (ctx.listeid().IDF() != null) {
             //si c'est un idf a afficher on verifie s'il est declaré
             if (!ts.containsElement(ctx.listeid().getText())) {
@@ -118,7 +105,7 @@ public class Listener extends LTBaseListener {
         }
     }
 
-    public void exitExp(TLParser.ExpContext ctx) {
+    public void exitExp(LTParser.ExpContext ctx) {
         if (ctx.exp() == null)
             addCtxType(ctx, getCtxType(ctx.complicated()));
         else {
@@ -135,7 +122,7 @@ public class Listener extends LTBaseListener {
 
 
     @Override
-    public void exitcomplicated(TLParser.TContext ctx) {
+    public void exitcomplicated(LTParser.TContext ctx) {
         if (ctx.complicated() == null)
             addCtxType(ctx, getCtxType(ctx.fex()));
         else {
@@ -150,7 +137,7 @@ public class Listener extends LTBaseListener {
     }
 
     @Override
-    public void exitFex(TLParser.EndExContext ctx) {
+    public void exitFex(LTParser.EndExContext ctx) {
         if (ctx.ID() != null)
             addCtxType(ctx, table.getElement(ctx.ID().getText()).type);
         else if (ctx.exp() != null)
@@ -161,7 +148,7 @@ public class Listener extends LTBaseListener {
 
 
     @Override
-    public void exitVal(TinyLangageSIIParser.ValContext ctx) {
+    public void exitVal(LTParser.ValContext ctx) {
         addCtxType(ctx, (ctx.INTEGERVAL() != null) ? INT : FLOAT);
     }
 
