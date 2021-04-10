@@ -89,7 +89,9 @@ public class Listener extends LTBaseListener {
                     if (Ruletype.get(ctx.oprt()) == 1)
                         typevar = " int";
                     else
+                        if (Ruletype.get(ctx.oprt()) == 2)
                         typevar = "float";
+                        else typevar = "string";
                     listeErreurs.add("Ereeur: incompatibilité des types de la variable " + ts.getElement(ctx.ID().getText()) + " et la variable " + ctx.oprt().getText() + " type :" + typevar);
                 }
             }
