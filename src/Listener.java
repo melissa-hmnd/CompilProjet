@@ -150,10 +150,15 @@ public class Listener extends LTBaseListener {
 
 
     @Override
-    public void exitVal(LTParser.ValContext ctx) {
-        addCtxType(ctx, (ctx.INTEGERVAL() != null) ? INT : FLOAT);
+    public void exitVal(ParserRuleContext ctx) {
+        int type;
+        if (ctx.INTVAL() != null)
+            type = INT;
+        else if (ctx.FLOATVAL() != null)
+            type = FOAT;
+        else type = STRING;
+        addCtxType(ctx, type);
     }
-
 
     private void addCtxType(ParserRuleContext ctx, int type) {
         types.put(ctx, type);
