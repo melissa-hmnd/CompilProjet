@@ -48,16 +48,16 @@ public class Listener extends LTBaseListener {
         {type = FLOAT;}
         else {type = STRING;}
 
-        TLParser.VarsContext vars = ctx.vars();
+        TLParser.VarsContext var = ctx.var();
 
-        for (; ; vars = vars.vars()) // loop over vars
+        for (; ; var = vars.var()) // loop over vars
         {
-            String varName = vars.getChild(0).getText();
+            String varName = var.getChild(0).getText();
             if (ts.containsElement(varName)) {
                 errors.add("Double declaration of variable: " + varName);
             } else
                 ts.addElement(new Ts.Element(varName, DECLARED, type, ""));
-            if (vars.vars() == null)
+            if (var.var() == null)
                 return;
         }
 
