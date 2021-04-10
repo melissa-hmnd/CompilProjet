@@ -21,7 +21,7 @@ public class Listener extends LTBaseListener {
     // valeur correspondante au type int
     private static final int INT = 1;
     // valeur correspondante au type string
-    private static final int INT = 3;
+    private static final int STRING = 3;
 
     public void exitProgram(TinyParser.ProgContext ctx) {
 
@@ -41,7 +41,12 @@ public class Listener extends LTBaseListener {
     }
 
     public void exitDec(TLParser.DecContext ctx) {
-        int type = (ctx.type().getText().equals("intCompil")) ? INT : FLOAT;
+        int type;
+        if (ctx.type().getText().equals("intCompil") == True )
+        {type = INT;}
+        else if (ctx.type().getText().equals("floatCompil") == True )
+        {type = FLOAT;}
+        else {type = STRING;}
 
         TLParser.VarsContext vars = ctx.vars();
 
