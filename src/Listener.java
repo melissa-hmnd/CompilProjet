@@ -99,7 +99,7 @@ public class Listener extends LTBaseListener {
     }
 
     public void exitWrite(LTParser.WriteContext ctx) {
-        if (ctx.listeid().IDF() != null) {
+        if (ctx.listeid().ID() != null) {
             //si c'est un idf a afficher on verifie s'il est declaré
             if (!ts.containsElement(ctx.listeid().getText())) {
                 listeErreurs.add("Erreur: la variable " + ctx.t().getText() + " n'est pas declaree");
